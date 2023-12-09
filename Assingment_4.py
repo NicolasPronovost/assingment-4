@@ -12,15 +12,27 @@ class MusicLibrary:
         self.json_file = json_file
         self.songs = self.load_songs()
 
+#load song from json file
     def load_song(self):
+        try:
+            with open (self.json_file, 'r') as file:
+                songs = json.load(file)
+#exception handling :)
+        except FileNotFoundError:
+            return[]
 
+#save songs in json file
     def save_songs(self):
+        with open (self.json_file, 'w') as file:
+            json.dump(self.songs, file, indent=2)
 
+#add song to json file
     def add_song(self, title, artist):
         song = {'title': title, 'artist': artist}
         self.songs.append(song)
         self.save_songs()
         print (f"Added {title} by {artist} to your music library")
+
 
     def search_song(self, query ):
 
