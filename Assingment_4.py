@@ -17,6 +17,10 @@ class MusicLibrary:
     def save_songs(self):
 
     def add_song(self, title, artist):
+        song = {'title': title, 'artist': artist}
+        self.songs.append(song)
+        self.save_songs()
+        print (f"Added {title} by {artist} to your music library")
 
     def search_song(self, query ):
 
