@@ -33,8 +33,10 @@ class MusicLibrary:
         self.save_songs()
         print (f"Added {title} by {artist} to your music library")
 
-
+#look in the json file for a song
     def search_song(self, query ):
+        matching_song = [song for song in self.songs if query.lower() in song ['title'].lower()]
+        return matching_song
 
     def edit_song(self, old_title, new_title, new_artist):
 
