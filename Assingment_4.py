@@ -38,7 +38,16 @@ class MusicLibrary:
         matching_song = [song for song in self.songs if query.lower() in song ['title'].lower()]
         return matching_song
 
+#Gives the user the ability to edit a song in there library
     def edit_song(self, old_title, new_title, new_artist):
+        for song in self.songs:
+            if song ['title'] == old_title:
+                song['title'] = new_title
+                song['artist'] = new_artist
+                self.save_songs()
+                return
+#exception handling
+        print (f"Song {old_title} was not found in your music library")           
 
     def delete_song(self, title):
 
