@@ -99,9 +99,15 @@ def main():
             Music_library.delete_song(title)
 
         elif user_input == '5':
-            
+            print("This is your current music library:")
+            for song in Music_library.songs:
+                print(f"{song['title']} by {song['artist']}")
 
-        #elif user_input == '6':
+        elif user_input == '6':
+            print ("You are not exiting your music library. Goodbey :)")
+            break
+        else:
+            print("Pleas enter a vlide menu option")
         
 if __name__ == "__main__":
     main()     
