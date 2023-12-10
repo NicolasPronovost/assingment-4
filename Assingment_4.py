@@ -10,7 +10,7 @@ import json
 class MusicLibrary:
     def __init__ (self, json_file='music_library.json'):
         self.json_file = json_file
-        self.songs = self.load_songs()
+        self.songs = self.load_song()
 
 #load song from json file
     def load_song(self):
@@ -60,4 +60,23 @@ class MusicLibrary:
             
 # This will be the user interface
 def main():
-    Music_library = MusicLibrary
+    Music_library = MusicLibrary()
+
+    while True:
+        print("\n\nMusic library menu:")
+        print("1. Add song")
+        print("2. Search song")
+        print("3. Edit song")
+        print("4. Delete song")
+        print("5. Show library")
+        print("6. Quit")
+
+        user_input = input("Enter disiered function (1-6): ")
+
+        if user_input == '1':
+            title = input("Enter the title of the song: ")
+            artist = input("Enter artist name or band name: ")
+            Music_library.add_song(title, artist)
+
+if __name__ == "__main__":
+    main()     
