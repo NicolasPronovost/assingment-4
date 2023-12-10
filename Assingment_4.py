@@ -77,6 +77,30 @@ def main():
             title = input("Enter the title of the song: ")
             artist = input("Enter artist name or band name: ")
             Music_library.add_song(title, artist)
+        
+        elif user_input == '2':
+            query = input("Enter a key word to search for a song: ")
+            matching_songs = Music_library.search_song(query)
+            if matching_songs:
+                print("There is a matching song: ")
+                for song in matching_songs:
+                    print (f"{song ['title']} by {song['artist']}")
+            else:
+                print("No matching song found")
+    
+        elif user_input == '3':
+            old_title = input("Enter the title of the song you would like to edit: ")
+            new_title = input("Enter the new title name: ")
+            new_artist = input("Enter the new name of the artist: ")
+            Music_library.edit_song(old_title, new_title, new_artist)
+            
+        #elif user_input == '4':
 
+
+        #elif user_input == '5':
+
+
+        #elif user_input == '6':
+        
 if __name__ == "__main__":
     main()     
