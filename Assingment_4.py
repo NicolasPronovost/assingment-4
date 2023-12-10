@@ -49,9 +49,15 @@ class MusicLibrary:
 #exception handling
         print (f"Song {old_title} was not found in your music library")           
 
+#Gives the user the ability to delet a song 
     def delete_song(self, title):
-
-
+        for song in self.save_songs:
+            if song['title'] == title:
+                self.songs.remove(song)
+                self.save_songs()
+                return
+        print(f"Song {title} not found in library")
+            
 # This will be the user interface
 def main():
     Music_library = MusicLibrary
