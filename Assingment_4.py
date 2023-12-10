@@ -93,12 +93,13 @@ def main():
             new_title = input("Enter the new title name: ")
             new_artist = input("Enter the new name of the artist: ")
             Music_library.edit_song(old_title, new_title, new_artist)
+
+        elif user_input == '4':
+            title = input("Enter song title you would like to delet: ")
+            Music_library.delete_song(title)
+
+        elif user_input == '5':
             
-        #elif user_input == '4':
-
-
-        #elif user_input == '5':
-
 
         #elif user_input == '6':
         
