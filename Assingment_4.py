@@ -17,7 +17,7 @@ class MusicLibrary:
         try:
             with open (self.json_file, 'r') as file:
                 songs = json.load(file)
-#exception handling :)
+            return songs
         except FileNotFoundError:
             return[]
 
@@ -45,22 +45,24 @@ class MusicLibrary:
                 song['title'] = new_title
                 song['artist'] = new_artist
                 self.save_songs()
+                print(f"Edited '{old_title}' to '{new_title}' by {new_artist}")                
                 return
 #exception handling
         print (f"Song {old_title} was not found in your music library")           
 
 #Gives the user the ability to delet a song 
     def delete_song(self, title):
-        for song in self.save_songs:
+        for song in self.songs:
             if song['title'] == title:
                 self.songs.remove(song)
                 self.save_songs()
+                print(f"Deleted {title} from library")
                 return
         print(f"Song {title} not found in library")
             
 # This will be the user interface
 def main():
-    Music_library = MusicLibrary()
+    music_library = MusicLibrary()
 
     while True:
         print("\n\nMusic library menu:")
@@ -76,11 +78,11 @@ def main():
         if user_input == '1':
             title = input("Enter the title of the song: ")
             artist = input("Enter artist name or band name: ")
-            Music_library.add_song(title, artist)
+            music_library.add_song(title, artist)
         
         elif user_input == '2':
             query = input("Enter a key word to search for a song: ")
-            matching_songs = Music_library.search_song(query)
+            matching_songs = music_library.search_song(query)
             if matching_songs:
                 print("There is a matching song: ")
                 for song in matching_songs:
@@ -92,19 +94,19 @@ def main():
             old_title = input("Enter the title of the song you would like to edit: ")
             new_title = input("Enter the new title name: ")
             new_artist = input("Enter the new name of the artist: ")
-            Music_library.edit_song(old_title, new_title, new_artist)
+            music_library.edit_song(old_title, new_title, new_artist)
 
         elif user_input == '4':
-            title = input("Enter song title you would like to delet: ")
-            Music_library.delete_song(title)
+            title = input("Enter song title you would like to delete: ")
+            music_library.delete_song(title)
 
         elif user_input == '5':
             print("This is your current music library:")
-            for song in Music_library.songs:
+            for song in music_library.songs:
                 print(f"{song['title']} by {song['artist']}")
 
         elif user_input == '6':
-            print ("You are not exiting your music library. Goodbey :)")
+            print ("You are now exiting your music library. Goodbey :)")
             break
         else:
             print("Pleas enter a vlide menu option")
